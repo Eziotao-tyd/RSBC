@@ -1,4 +1,10 @@
 # .gitignore
-
+*.pyc
+*.log
+__pycache__/
 pre_train/*.pth
-dataset/
+dataset/*.csv
+.vscode/
+*.png
+*.pkl
+*.pth

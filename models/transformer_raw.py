@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 
 class TransformerModel(nn.Module):
-    def __init__(self, input_dim, embed_dim, num_classes, num_heads=4, num_encoder_layers=3, dropout=0.1):
+    def __init__(self, input_dim, embed_dim, num_classes, num_heads=4, num_encoder_layers=8, dropout=0.1):
         super(TransformerModel, self).__init__()
         
         # Embedding Layer
@@ -17,8 +17,8 @@ class TransformerModel(nn.Module):
         
     def forward(self, x):
         x = self.embedding(x)
-        x = self.transformer_encoder(x)
-        x = self.classifier(x[:, 0, :])  # Use the first token for classification
+        x = self.transformer_encoder(x)  #(batch_size, embed_dim)
+        x = self.classifier(x)  # Use the first token for classification
         return x
 
 # Example usage:
